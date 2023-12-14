@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b41r43vd28bcd"]
+
+[ext_resource type="Script" path="res://src/Scripts/Player.gd" id="1_6qifn"]
+[ext_resource type="Texture2D" uid="uid://db7mu3gncxypo" path="res://assets/Test.png" id="2_qm4ag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr5iq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq1qx"]
+size = Vector2(18, 18)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_6qifn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.168627, 1, 0, 1)
+self_modulate = Color(0.168627, 1, 0, 1)
+texture = ExtResource("2_qm4ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_nr5iq")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pq1qx")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
