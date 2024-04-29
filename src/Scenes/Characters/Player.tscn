@@ -1,28 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://b41r43vd28bcd"]
+[gd_scene load_steps=6 format=3 uid="uid://b41r43vd28bcd"]
 
 [ext_resource type="Script" path="res://src/Scripts/Player.gd" id="1_6qifn"]
 [ext_resource type="Texture2D" uid="uid://db7mu3gncxypo" path="res://assets/Test.png" id="2_qm4ag"]
+[ext_resource type="PackedScene" uid="uid://d0gadaor1p1hu" path="res://src/Scenes/Objects/Gun.tscn" id="3_6g5mj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr5iq"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq1qx"]
-size = Vector2(18, 18)
+size = Vector2(17, 17)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_6qifn")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.168627, 1, 0, 1)
 self_modulate = Color(0.168627, 1, 0, 1)
 texture = ExtResource("2_qm4ag")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="IFrame" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(0.545098, 0, 0, 0.768627)
+texture = ExtResource("2_qm4ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nr5iq")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
@@ -30,4 +33,34 @@ shape = SubResource("RectangleShape2D_nr5iq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_pq1qx")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Gun" parent="Node2D2" instance=ExtResource("3_6g5mj")]
+position = Vector2(8, -2)
+
+[node name="GunCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(12.435, -2.055)
+rotation = 1.5708
+scale = Vector2(1.021, 0.968)
+polygon = PackedVector2Array(-1.95886, 4.5208, 6.31199, 4.4603, 5.93046, 0.44938, 2.01273, 0.44938, 1.96082, -6.12729, -1.9569, -6.12729)
+disabled = true
+
+[node name="Damage Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Spawn Protection" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Damage Timer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="IFrames" to="." method="_on_i_frames_timeout"]
+[connection signal="timeout" from="Spawn Protection" to="." method="_on_spawn_protection_timeout"]

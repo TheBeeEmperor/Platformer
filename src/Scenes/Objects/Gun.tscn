@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0gadaor1p1hu"]
+
+[ext_resource type="Script" path="res://src/Scripts/Gun.gd" id="1_4euir"]
+[ext_resource type="Texture2D" uid="uid://db7mu3gncxypo" path="res://assets/Test.png" id="1_udyjp"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_4euir")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.65, 0.26)
+texture = ExtResource("1_udyjp")
+offset = Vector2(8, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2.216, 4)
+scale = Vector2(0.276875, 0.299125)
+texture = ExtResource("1_udyjp")
+
+[node name="End Point" type="Node2D" parent="."]
+position = Vector2(237, 0)
+scale = Vector2(0.65, 0.26)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(12.1, 0)
+scale = Vector2(0.65, 0.26)

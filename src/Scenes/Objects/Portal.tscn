@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi0df4xu0ykha"]
+[gd_scene load_steps=6 format=3 uid="uid://bi0df4xu0ykha"]
 
 [ext_resource type="Texture2D" uid="uid://db7mu3gncxypo" path="res://assets/Test.png" id="1_nny5n"]
 [ext_resource type="Script" path="res://src/Scripts/Portal.gd" id="2_d0nyi"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gg1oe"]
+size = Vector2(8.75, 39.6667)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obcsg"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rubd0"]
+size = Vector2(7, 39.6667)
 
 [node name="Portal" type="Sprite2D"]
 modulate = Color(0, 0.890196, 0.890196, 1)
@@ -13,10 +19,28 @@ scale = Vector2(1, 3)
 texture = ExtResource("1_nny5n")
 script = ExtResource("2_d0nyi")
 
+[node name="Right Wall3" type="StaticBody2D" parent="." groups=["Obstacles"]]
+position = Vector2(-394, 0)
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall3"]
+position = Vector2(381.375, 3.16667)
+shape = SubResource("RectangleShape2D_gg1oe")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.38419e-07)
 shape = SubResource("RectangleShape2D_obcsg")
+
+[node name="Right Wall2" type="StaticBody2D" parent="." groups=["Obstacles"]]
+position = Vector2(-197, 0)
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall2"]
+position = Vector2(208.5, 2.83333)
+shape = SubResource("RectangleShape2D_rubd0")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

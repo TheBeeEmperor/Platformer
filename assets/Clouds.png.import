@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db7mu3gncxypo"
-path.s3tc="res://.godot/imported/Test.png-26ee81626f965e4e70a4f24e7e22dea8.s3tc.ctex"
+uid="uid://srswciig4ll1"
+path="res://.godot/imported/Clouds.png-624d2223218823c3065f323d7e91aaed.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Test.png"
-dest_files=["res://.godot/imported/Test.png-26ee81626f965e4e70a4f24e7e22dea8.s3tc.ctex"]
+source_file="res://assets/Clouds.png"
+dest_files=["res://.godot/imported/Clouds.png-624d2223218823c3065f323d7e91aaed.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
